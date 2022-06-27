@@ -7,9 +7,14 @@
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML
+- CSS
+- JavaScript
+
+## Technologies Used
+
+- Loal Storage
+- Linters
 
 ## Live [⇗](https://okoyecharles.github.io/Awesome-Books/)
 
