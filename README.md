@@ -2,19 +2,20 @@
 
 # Awesome Books
 
-> In this project, Me and my Partner built a basic website that allows users to add/remove books from a list. We achieved that by using JavaScript objects and arrays. We also dynamically modified the DOM and added basic events.
+> In this project, We built a basic website that allows users to add/remove books from a list. We achieved that by using JavaScript objects and arrays. We also dynamically modified the DOM and added basic events.
 
 
 ## Built With
 
-- HTML
-- CSS
-- JavaScript
+- Major languages
+    - [ ] HTML
+    - [ ] CSS
+    - [ ] JavaScript
 
-## Technologies Used
-
-- Loal Storage
-- Linters
+- Technologies used
+    - [ ] JocalStorage
+    - [ ] Github workflow
+    - [ ] Linters
 
 ## Live [⇗](https://okoyecharles.github.io/Awesome-Books/)
 
@@ -29,11 +30,19 @@
 - Select download Zip option from drop down menu.
 - Once the download is complete you will be able to access my project locally 😀. 
 
-## Author
+## Authors
+
+👤 **Okoye Charles**
 
 - GitHub: [@okoyecharles](https://github.com/okoyecharles)
 - Twitter: [@okoyecharles_](https://twitter.com/okoyecharles_)
 - LinkedIn: [Charles Okoye](https://linkedin.com/in/charles-okoye-633374236/)
+
+👤 **Desmond Owusu Ansah**
+
+- Github [@Owusu-Desmond](https://github.com/Owusu-Desmond)
+- Twitter [@DesmondOwusuDev](https://twitter.com/DesmondOwusuDev)
+- LinkedIn [@desmond-owusu-ansah](https://www.linkedin.com/in/desmond-owusu-ansah-09274a223/)
 
 ## 🤝 Contributing
 
