@@ -1,80 +1,69 @@
-class Storage {
-    getFromStore = (key) => {
-        if (!localStorage.getItem(key)) return [];
-        else {
-            return JSON.parse(localStorage.getItem(key));
-        }
-    }
-    addToStore = (key, value) => {
-        localStorage.setItem(key, JSON.stringify(value))
-    }
-    deleteFromStore = (key, title) => {
-        // first get the books from storage
-        let books = this.getFromStore(key);
-        // remove book base on title
-        books.forEach((book, index) => {
-            if (book.title === title) {
-                books.splice(index, 1)
-            }
-        })
-        // add remaining books to storage
-        this.addToStore(key, books)
-    }
-}
-
-let storage = new Storage()
-
-const books = storage.getFromStore('Books');
-// function to loop through the already added books stored and display them
-const bookContent = (title, author) => {
-    const booksContainer = document.querySelector('.added-books-container');
-    const bookContainer = document.createElement('div');
-    bookContainer.setAttribute('id', `bookContainer${title}`)
-    const bookContent = `
-                          <p class="book-title"> The title of the book is ${title} </p>
-                          <div class= "book-author"> ${author} </div>
-                          <button id = '${title}' type="button" class="remove-button"> Remove </button>
-                          <hr>
-                      `;
-    bookContainer.innerHTML = bookContent;
-    booksContainer.appendChild(bookContainer);
-}
-const displayBooks = (books) => {
-    books.forEach(book => {
-        bookContent(book.title, book.author)
-    })
-}
-displayBooks(books);
-
 const form = document.getElementById('form');
-form.addEventListener('submit', ((event) => {
-    event.preventDefault();
-    addBooks(books);
-})
-)
+const booksContainer = document.querySelector('.added-books-container')
 
-// Fuction to add books to array
-const addBooks = (books) => {
-    const title = form.elements.title.value
-    const author = form.elements.author.value
-    let book = {
-        title: title,
-        author: author
-    }
-    books.push(book);
-    // add book to storage when from onsubmit
-    new Storage().addToStore("Books", books);
-    // add to user interface when form onsubmit
-    bookContent(title, author);
+// This function deletes the book from the UI and the Local Storage
+const deleteBook = (btn) => {
+    const parent = btn.parentElement;
+    parent.parentElement.removeChild(parent);
+    let books = JSON.parse(localStorage.getItem('books'));
+    books = books.filter(book => book.title != btn.parentElement.children[0].innerHTML.slice(8));
+    localStorage.setItem('books', JSON.stringify(books));
 }
 
-const removeButtons = Array.from(document.querySelectorAll('.remove-button'))
+// This Updates The User Interface When 'add' is clicked
+const updateUI = () => {
+  const books = JSON.parse(localStorage.getItem('books'));
+  booksContainer.innerHTML = ``;
+  if (books) {
+    books.forEach(book => {
+      if (book.title && book.author) {
+        const bookUI = document.createElement('div')
+        bookUI.className = 'book'
+        bookUI.innerHTML = `
+        <p class="book-title"> Title: ${book.title}</p>
+        <div class= "book-author"> By ${book.author} </div>
+        <button id = '${book.title}' type="button" class="remove-button"> Remove </button>
+        <hr>`
+        booksContainer.appendChild(bookUI)
+      }
+    })
+  }
+  const removeBtns = Array.from(document.querySelectorAll('.remove-button'))
 
-removeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    storage.deleteFromStore('Books', button.id);
-    document.getElementById(`bookContainer${button.id}`).style.display = 'none';
-  })
+  removeBtns.forEach(btn => btn.addEventListener('click', () => deleteBook(btn)) )
+}
+
+updateUI()
+
+// This Function Adds Book information to Local Storage
+const addToStore = (bookObj, title, author) => {
+  if (title && author) {
+    if (!localStorage.getItem('books')) {
+      localStorage.setItem('books', JSON.stringify([]))
+      const books = JSON.parse(localStorage.getItem('books'))
+      books.push(bookObj);
+      localStorage.setItem('books', JSON.stringify(books))
+    } else {
+      const books = JSON.parse(localStorage.getItem('books'))
+      books.push(bookObj);
+      localStorage.setItem('books', JSON.stringify(books))
+    }
+  }
+}
+
+// This Executes Certain Functions When the form is submitted
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const title = form.elements.title.value;
+  const author = form.elements.author.value;
+  const bookObj = {
+    title: title,
+    author: author
+  }
+  form.elements.title.value = ''
+  form.elements.author.value = ''
+  
+  // Update the Storage and User Interface
+  addToStore(bookObj, title, author)
+  updateUI()
 })
-
-
