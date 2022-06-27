@@ -11,62 +11,32 @@
 - Frameworks
 - Technologies used
 
-## Live Demo (if available)
+## Live [⇗](https://okoyecharles.github.io/Awesome-Books/)
 
-[Live Demo Link](https://livedemo.com)
-
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+[Click here to see my Porfolio on the Live on The Web](https://okoyecharles.github.io/Awesome-Books/)
 
 
-To get a local copy up and running follow these simple example steps.
+## Taking Actions
+**Instructions on how to access my project locally:** 
+> To Access my project locally please follow the instructions listed below
+- Enter this url: [https://github.com/OkoyeCharlesv/Awesome-Books](https://github.com/OkoyeCharles/Awesome-Books) in your web browser.
+- Once opened navigate to the top left level of the project a green code download button will be visible on the righthand side.
+- Select download Zip option from drop down menu.
+- Once the download is complete you will be able to access my project locally 😀. 
 
-### Prerequisites
+## Author
 
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
-
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@okoyecharles](https://github.com/okoyecharles)
+- Twitter: [@okoyecharles_](https://twitter.com/okoyecharles_)
+- LinkedIn: [Charles Okoye](https://linkedin.com/in/charles-okoye-633374236/)
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
+If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement". Remember to support the project with a star. 
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Credit to ![](https://img.shields.io/badge/Microverse-blueviolet) for providing the essential resources that made this project possible.
 
 ## 📝 License
 
