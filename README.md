@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Awesome Books
 
-> Description the project.
+> In this project, Me and my Partner built a basic website that allows users to add/remove books from a list. We achieved that by using JavaScript objects and arrays. We also dynamically modified the DOM and added basic events.
 
 
 ## Built With
@@ -19,7 +19,7 @@
 ## Taking Actions
 **Instructions on how to access my project locally:** 
 > To Access my project locally please follow the instructions listed below
-- Enter this url: [https://github.com/OkoyeCharlesv/Awesome-Books](https://github.com/OkoyeCharles/Awesome-Books) in your web browser.
+- Enter this url: [https://github.com/OkoyeCharles/Awesome-Books](https://github.com/OkoyeCharles/Awesome-Books) in your web browser.
 - Once opened navigate to the top left level of the project a green code download button will be visible on the righthand side.
 - Select download Zip option from drop down menu.
 - Once the download is complete you will be able to access my project locally 😀. 
