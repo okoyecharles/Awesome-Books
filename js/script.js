@@ -36,7 +36,7 @@ class Store {
     // Remove books from storage
     let books = Store.getBooks();
     const p = btn.parentElement.children[0].innerHTML;
-    books = books.filter((book) => !p.includes(book.title && book.author));
+    books = books.filter((book) => !p.includes(book.title || book.author));
     localStorage.setItem('books', JSON.stringify(books));
   }
 }
