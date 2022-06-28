@@ -1,5 +1,6 @@
 @import url('http://fonts.cdnfonts.com/css/cocogoose');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -16,7 +17,7 @@ section {
   gap: 10px;
 }
 
-section:nth-child(1){
+section:nth-child(1) {
   padding-top: 20px;
 }
 
@@ -24,7 +25,7 @@ section:nth-child(1){
   width: 100%;
   border: 1px solid lightgray;
   border-radius: 5px;
-  box-shadow: 0 0 10px .5px rgb(236, 236, 236);
+  box-shadow: 0 0 10px 0.5px rgb(236, 236, 236);
 }
 
 .added-books-container > :nth-child(even) {
@@ -50,7 +51,7 @@ section:nth-child(1){
   border-radius: 5px;
   background: red;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .remove-button:hover {
@@ -73,15 +74,14 @@ form input {
 
 form button {
   width: min-content;
-  padding: 2px 5px;
   align-self: flex-end;
   padding: 3px 8px;
   color: white;
   border: none;
   border-radius: 3px;
   background: green;
-  box-shadow: 1px 1px 2px .5px lightgray;
-  transition: .2s;
+  box-shadow: 1px 1px 2px 0.5px lightgray;
+  transition: 0.2s;
 }
 
 form button:hover {
@@ -92,6 +92,3 @@ form button:active {
   background: darkgreen;
   box-shadow: none;
 }
-
-
-
