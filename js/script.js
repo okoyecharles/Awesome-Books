@@ -134,8 +134,8 @@ UI.updateBooks(document.querySelector('.added-books-container'));
 
 // Remove completely from store and UI
 const removeBook = () => {
-  const books = Store.getBooks();
   booksContainer.addEventListener('click', (e) => {
+    const books = Store.getBooks();
     books.forEach((b) => {
       if (e.target.classList.contains(`${b.title}${b.author}btn`)) {
         // from from UI
@@ -151,3 +151,14 @@ const removeBook = () => {
 document.addEventListener('click', () => {
   removeBook();
 });
+
+const main = document.querySelector('main');
+const sections = Array.from(document.querySelectorAll('section'));
+const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+
+const displayPage = (num) => {
+  sections.forEach((section) => section.classList.add('hide'));
+  main.children[num].classList.remove('hide');
+  navLinks.forEach((link) => { link.className = 'nav-link'; });
+  navLinks[num].classList.add('active');
+};
