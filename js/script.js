@@ -12,17 +12,20 @@ class Book {
 
 // ====== Store Class: Handles all Operations on Local Storage ======
 class Store {
+    static setBook(books){
+        localStorage.setItem('books', JSON.stringify(books));
+    }
     static addBook(book) {
         const books = JSON.parse(localStorage.getItem('books'));
         // Check if books exist then add them to Local Storage
         if (!books) {
             const books = [];
-            localStorage.setItem('books', JSON.stringify(books));
+            this.setBook(books)
             books.push(book);
-            localStorage.setItem('books', JSON.stringify(books));
+            this.setBook(books)
         } else {
             books.push(book);
-            localStorage.setItem('books', JSON.stringify(books));
+            this.setBook(books)
         }
     }
 
@@ -32,13 +35,20 @@ class Store {
         return books;
     }
 
-    static removeBook(btn, book) {
+    static removeBook(bookTitle,bookAuthor){
+        let books = this.getBooks();
+        console.log(2);
 
-        // const p = btn.parentElement.children[0].innerHTML;
-        // books = books.filter((book) => !p.includes(book.title || book.author));
-        localStorage.setItem('books', JSON.stringify(books));
+        books.forEach(b => {
+            if (bookTitle === b.title && bookAuthor === b.author) {
+                console.table(books)
+                books.splice(b, 1);
+                this.setBook(books)
+            }
+        })
     }
 }
+
 
 // ====== UI Class : Updates Specific parts of the User Interface ======
 class UI {
@@ -49,11 +59,6 @@ class UI {
         if (books) {
             books.forEach((book) => this.addBook(book));
         }
-            // // Remove Books from UI when 'remove' button is clicked
-            // const btns = Array.from(document.querySelectorAll('.remove-button'));
-            // btns.forEach((btn) => btn.addEventListener('click', () => {
-            //     UI.removeBook(btn);
-            // }));
     }
 
     static addBook(book) {
@@ -62,9 +67,16 @@ class UI {
 
         bookUI.setAttribute('id', (`${book.title}${book.author}`))
         bookUI.innerHTML = `
-    <p class="book-title">"<span id='${book.title}${book.author}title'>${book.title}" by <span id='${book.title}${book.author}author'>${book.author}<span></p>
-    <button class="${book.title}${book.author}btn remove-button" type="button" class="remove-button"><i class="fa-solid fa-xmark"></i></button>`;
+                <p class="book-title">"
+                    <span id='${book.title}${book.author}title'>${book.title}</span>" by 
+                    <span id='${book.title}${book.author}author'>${book.author}</span>
+                </p>
+                <button class="${book.title}${book.author}btn remove-button" type="button" class="remove-button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+        `;
         booksContainer.append(bookUI);
+
     }
 
     static clearInputs() {
@@ -72,9 +84,8 @@ class UI {
         form.elements.author.value = '';
     }
 
-    static removeBook(btn) {
-        btn.parentElement.remove();
-        Store.removeBook(btn);
+    static removeBook(bookTitle, bookAuthor) {
+        document.getElementById(`${bookTitle}${bookAuthor}`).style.display = 'none';
     }
 
 
@@ -124,24 +135,20 @@ form.addEventListener('submit', (event) => {
 // Display Books When Page is reloaded
 UI.updateBooks(document.querySelector('.added-books-container'));
 
-// Remove books from storage
-let books = Store.getBooks();
-booksContainer.addEventListener('click', (e) => {
-    books.forEach((b) => {
-      
-        if (e.target.classList.contains(`${b.title}${b.author}btn`)) {
-            // from from UI
-            document.getElementById(`${b.title}${b.author}`).style.display = 'none';
-            // remove from Stroage
-            let books = Store.getBooks();
-            let bookTitle = document.getElementById(`${b.title}${b.author}title`).innerText;
-            let bookAuthor = document.getElementById(`${b.title}${b.author}author`).innerText;
-            books.forEach(b => {
-                if (bookTitle === b.title && bookAuthor === b.author) {
-                    books.splice(b);
-                    localStorage.setItem('books', JSON.stringify(books));
-                }
-            })
-        }
+// Remove completely from store and UI
+const removeBook = () => {
+    let books = Store.getBooks();
+    booksContainer.addEventListener('click', (e) => {
+        books.forEach((b) => {
+            if (e.target.classList.contains(`${b.title}${b.author}btn`)) {
+                // from from UI
+                UI.removeBook(b.title, b.author)
+                // remove from Stroage
+                let bookTitle = document.getElementById(`${b.title}${b.author}title`).innerHTML;
+                let bookAuthor = document.getElementById(`${b.title}${b.author}author`).innerHTML;
+                Store.removeBook(bookTitle,bookAuthor)
+            }
+        })
     })
-})
+}
+removeBook();
