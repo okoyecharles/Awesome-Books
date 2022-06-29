@@ -47,9 +47,8 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  max-width: 400px;
-  height: 95vh;
+  margin: 50px auto;
+  max-width: 600px;
   padding: 10px;
   gap: 10px;
 }
