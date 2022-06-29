@@ -14,13 +14,13 @@
       <div id="logo">Awesome Books</div>
       <nav>
         <ul class="nav-links">
-          <li class="nav-link active">List</li>
-          <li class="nav-link">Add New</li>
-          <li class="nav-link">Contact</li>
+          <li class="nav-link active" onclick= displayPage(1)>List</li>
+          <li class="nav-link" onclick= displayPage(2)>Add New</li>
+          <li class="nav-link" onclick= displayPage(3)>Contact</li>
         </ul>
       </nav>
     </header>
-    <main> 
+    <main id="main"> 
       <!-- this sections contains the list of books added -->
       <section>
         <h2>All Awesome Books</h2>
@@ -29,7 +29,7 @@
         </div>
       </section>
       <!--  add book section -->
-      <section>
+      <section class="hide">
         <h2 class="form-prompt">Add a new Book</h2>
         <div class="error-message"></div>
         <form id="form">
@@ -39,7 +39,7 @@
         </form>
       </section>
       <!-- the contact section -->
-      <section>
+      <section class="hide">
         <h2>Contact Information</h2>
         <p>Do you have any questions to ask or you just want to say "Hello"? <br>
           You can reach out to us!
