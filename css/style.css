@@ -63,7 +63,7 @@ section:nth-child(1) {
 }
 
 .error-message {
-  color: #ff0000;
+  color: #f00;
   text-align: center;
 }
 
