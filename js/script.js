@@ -151,3 +151,16 @@ const removeBook = () => {
 document.addEventListener('click', () => {
   removeBook();
 });
+
+const main = document.querySelector('main');
+const sections = Array.from(document.querySelectorAll('section'))
+const navLinks = Array.from(document.querySelectorAll('.nav-link'))
+
+const displayPage = (num) => {
+  sections.forEach(section => section.classList.add('hide'))
+  main.children[num-1].classList.remove('hide')
+  navLinks.forEach(link => link.className = 'nav-link')
+  navLinks[num-1].classList.add('active')
+}
+
+
