@@ -133,9 +133,9 @@ form.addEventListener('submit', (event) => {
 UI.updateBooks(document.querySelector('.added-books-container'));
 
 // Remove completely from store and UI
-const removeBook = () => {
-  const books = Store.getBooks();
+const removeBook = () => { 
   booksContainer.addEventListener('click', (e) => {
+    const books = Store.getBooks();
     books.forEach((b) => {
       if (e.target.classList.contains(`${b.title}${b.author}btn`)) {
         // from from UI
