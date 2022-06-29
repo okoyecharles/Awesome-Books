@@ -49,8 +49,13 @@ section {
   align-items: center;
   margin: 50px auto;
   max-width: 600px;
+  min-height: calc(100vh - 285px);
   padding: 10px;
   gap: 10px;
+}
+
+section.hide {
+  display: none;
 }
 
 section:nth-child(1) {
