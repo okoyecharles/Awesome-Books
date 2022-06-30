@@ -61,14 +61,14 @@ class UI {
   static addBook(book) {
     const bookUI = document.createElement('div');
     bookUI.className = 'book';
-
-    bookUI.setAttribute('id', (`${book.title}${book.author}`));
+    const uniqueBookId = (book.title + book.author).replace(/\s/g, "");
+    bookUI.setAttribute('id', (uniqueBookId));
     bookUI.innerHTML = `
                 <p class="book-title">"
-                    <span id='${book.title}${book.author}title'>${book.title}</span>" by 
-                    <span id='${book.title}${book.author}author'>${book.author}</span>
+                    <span id='${uniqueBookId}title'>${book.title}</span>" by 
+                    <span id='${uniqueBookId}author'>${book.author}</span>
                 </p>
-                <button class="${book.title}${book.author}btn remove-button" type="button" class="remove-button">
+                <button class="${uniqueBookId}btn remove-button" type="button" class="remove-button">
                     &times;
                 </button>
         `;
@@ -80,8 +80,8 @@ class UI {
     form.elements.author.value = '';
   }
 
-  static removeBook(bookTitle, bookAuthor) {
-    document.getElementById(`${bookTitle}${bookAuthor}`).style.display = 'none';
+  static removeBook(uniqueBookId) {
+    document.getElementById(uniqueBookId).remove();
   }
 
   static displayError(message) {
@@ -137,12 +137,13 @@ const removeBook = () => {
   booksContainer.addEventListener('click', (e) => {
     const books = Store.getBooks();
     books.forEach((b) => {
-      if (e.target.classList.contains(`${b.title}${b.author}btn`)) {
-        // from from UI
-        UI.removeBook(b.title, b.author);
-        const bookTitle = document.getElementById(`${b.title}${b.author}title`).innerHTML;
-        const bookAuthor = document.getElementById(`${b.title}${b.author}author`).innerHTML;
+      const uniqueBookId = (b.title + b.author).replace(/\s/g, "");
+      if (e.target.classList.contains(`${uniqueBookId}btn`)) {
+        const bookTitle = document.getElementById(`${uniqueBookId}title`).innerHTML;
+        const bookAuthor = document.getElementById(`${uniqueBookId}author`).innerHTML;
         Store.removeBook(bookTitle, bookAuthor);
+        // from from UI
+        UI.removeBook(uniqueBookId);
       }
     });
   });
